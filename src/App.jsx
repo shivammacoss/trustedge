@@ -1,5 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import { PopupProvider } from './components/PopupContext'
+import ScrollProgress from './components/animations/ScrollProgress'
+import PageTransition from './components/animations/PageTransition'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -10,6 +13,7 @@ import Crypto from './pages/Crypto'
 import MT4 from './pages/MT4'
 import MT5 from './pages/MT5'
 import WebPlatform from './pages/WebPlatform'
+import SuperAdmin from './pages/SuperAdmin'
 import StandardAccount from './pages/StandardAccount'
 import ProAccount from './pages/ProAccount'
 import DemoAccount from './pages/DemoAccount'
@@ -20,31 +24,42 @@ import Blog from './pages/Blog'
 import Tutorials from './pages/Tutorials'
 import MarketNews from './pages/MarketNews'
 
+const AnimatedRoutes = () => {
+  const location = useLocation()
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/trading/forex" element={<PageTransition><Forex /></PageTransition>} />
+        <Route path="/trading/commodities" element={<PageTransition><Commodities /></PageTransition>} />
+        <Route path="/trading/indices" element={<PageTransition><Indices /></PageTransition>} />
+        <Route path="/trading/crypto" element={<PageTransition><Crypto /></PageTransition>} />
+        <Route path="/platforms/mt4" element={<PageTransition><MT4 /></PageTransition>} />
+        <Route path="/platforms/mt5" element={<PageTransition><MT5 /></PageTransition>} />
+        <Route path="/platforms/web" element={<PageTransition><WebPlatform /></PageTransition>} />
+        <Route path="/platforms/super-admin" element={<PageTransition><SuperAdmin /></PageTransition>} />
+        <Route path="/accounts/standard" element={<PageTransition><StandardAccount /></PageTransition>} />
+        <Route path="/accounts/pro" element={<PageTransition><ProAccount /></PageTransition>} />
+        <Route path="/accounts/demo" element={<PageTransition><DemoAccount /></PageTransition>} />
+        <Route path="/company/about" element={<PageTransition><AboutUs /></PageTransition>} />
+        <Route path="/company/why-trustedge" element={<PageTransition><WhyTrustEdgeFX /></PageTransition>} />
+        <Route path="/company/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="/education/blog" element={<PageTransition><Blog /></PageTransition>} />
+        <Route path="/education/tutorials" element={<PageTransition><Tutorials /></PageTransition>} />
+        <Route path="/education/news" element={<PageTransition><MarketNews /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  )
+}
+
 function App() {
   return (
     <Router>
       <PopupProvider>
+      <ScrollProgress />
       <div className="min-h-screen">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/trading/forex" element={<Forex />} />
-          <Route path="/trading/commodities" element={<Commodities />} />
-          <Route path="/trading/indices" element={<Indices />} />
-          <Route path="/trading/crypto" element={<Crypto />} />
-          <Route path="/platforms/mt4" element={<MT4 />} />
-          <Route path="/platforms/mt5" element={<MT5 />} />
-          <Route path="/platforms/web" element={<WebPlatform />} />
-          <Route path="/accounts/standard" element={<StandardAccount />} />
-          <Route path="/accounts/pro" element={<ProAccount />} />
-          <Route path="/accounts/demo" element={<DemoAccount />} />
-          <Route path="/company/about" element={<AboutUs />} />
-          <Route path="/company/why-trustedge" element={<WhyTrustEdgeFX />} />
-          <Route path="/company/contact" element={<Contact />} />
-          <Route path="/education/blog" element={<Blog />} />
-          <Route path="/education/tutorials" element={<Tutorials />} />
-          <Route path="/education/news" element={<MarketNews />} />
-        </Routes>
+        <AnimatedRoutes />
         <Footer />
       </div>
       </PopupProvider>

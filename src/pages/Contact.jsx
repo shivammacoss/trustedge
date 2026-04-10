@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Mail, Phone, MapPin, Send, MessageCircle, X } from 'lucide-react'
 import Button from '../components/Button'
 import Card from '../components/Card'
+import ScrollReveal, { ScrollRevealGroup, ScrollRevealItem } from '../components/animations/ScrollReveal'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -80,132 +81,142 @@ const Contact = () => {
     <div className="min-h-screen pt-20">
       <section className="section-padding bg-gradient-hero">
         <div className="container-custom text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Get in Touch</h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Have a question? Our team is here to help. Reach out to us anytime.
-          </p>
+          <ScrollReveal variant="fadeUp">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Get in Touch</h1>
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+              Have a question? Our team is here to help. Reach out to us anytime.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="section-padding bg-primary-secondary">
         <div className="container-custom">
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <ScrollRevealGroup className="grid md:grid-cols-3 gap-8 mb-16">
             {contactInfo.map((info, index) => (
-              <Card key={index} className="text-center p-8">
-                <info.icon className="w-12 h-12 text-primary-accent mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-white mb-2">{info.title}</h3>
-                <a href={info.link} className="text-text-secondary hover:text-primary-accent transition-colors">
-                  {info.content}
-                </a>
-              </Card>
+              <ScrollRevealItem key={index}>
+                <Card className="text-center p-8">
+                  <info.icon className="w-12 h-12 text-primary-accent mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-white mb-2">{info.title}</h3>
+                  <a href={info.link} className="text-text-secondary hover:text-primary-accent transition-colors">
+                    {info.content}
+                  </a>
+                </Card>
+              </ScrollRevealItem>
             ))}
-          </div>
+          </ScrollRevealGroup>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-text-secondary mb-2">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary-accent transition-colors"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-text-secondary mb-2">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary-accent transition-colors"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-text-secondary mb-2">Subject</label>
-                  <select
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary-accent transition-colors"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="account">Account Support</option>
-                    <option value="technical">Technical Issue</option>
-                    <option value="partnership">Partnership</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-text-secondary mb-2">Message</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="6"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary-accent transition-colors resize-none"
-                    placeholder="How can we help you?"
-                  ></textarea>
-                </div>
-                <Button type="submit" variant="primary" noPopup className="w-full flex items-center justify-center gap-2">
-                  <Send className="w-5 h-5" />
-                  Send Message
-                </Button>
-              </form>
-            </div>
-
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Our Office</h2>
-              <Card className="p-8 mb-6">
-                <h3 className="text-xl font-semibold text-white mb-4">TrustEdgeFX Ltd</h3>
-                <p className="text-text-secondary mb-4">
-                  123 Financial District<br />
-                  London, EC2N 2DL<br />
-                  United Kingdom
-                </p>
-                <div className="space-y-2">
-                  <p className="text-text-secondary">
-                    <span className="text-white font-semibold">Phone:</span> +44 20 1234 5678
-                  </p>
-                  <p className="text-text-secondary">
-                    <span className="text-white font-semibold">Email:</span> support@trustedgefx.com
-                  </p>
-                  <p className="text-text-secondary">
-                    <span className="text-white font-semibold">Hours:</span> Mon-Fri, 9:00 AM - 6:00 PM GMT
-                  </p>
-                </div>
-              </Card>
-
-              <div className="glass-card p-8 aspect-video bg-gradient-primary/10 flex items-center justify-center">
-                <MapPin className="w-24 h-24 text-primary-accent" />
+            <ScrollReveal variant="fadeLeft">
+              <div>
+                <h2 className="text-3xl font-bold text-white mb-6">Send Us a Message</h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-text-secondary mb-2">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary-accent transition-colors"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-text-secondary mb-2">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary-accent transition-colors"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-text-secondary mb-2">Subject</label>
+                    <select
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary-accent transition-colors"
+                    >
+                      <option value="">Select a subject</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="account">Account Support</option>
+                      <option value="technical">Technical Issue</option>
+                      <option value="partnership">Partnership</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-text-secondary mb-2">Message</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows="6"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary-accent transition-colors resize-none"
+                      placeholder="How can we help you?"
+                    ></textarea>
+                  </div>
+                  <Button type="submit" variant="primary" noPopup className="w-full flex items-center justify-center gap-2">
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </Button>
+                </form>
               </div>
-            </div>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fadeRight" delay={0.2}>
+              <div>
+                <h2 className="text-3xl font-bold text-white mb-6">Our Office</h2>
+                <Card className="p-8 mb-6">
+                  <h3 className="text-xl font-semibold text-white mb-4">TrustEdgeFX Ltd</h3>
+                  <p className="text-text-secondary mb-4">
+                    123 Financial District<br />
+                    London, EC2N 2DL<br />
+                    United Kingdom
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-text-secondary">
+                      <span className="text-white font-semibold">Phone:</span> +44 20 1234 5678
+                    </p>
+                    <p className="text-text-secondary">
+                      <span className="text-white font-semibold">Email:</span> support@trustedgefx.com
+                    </p>
+                    <p className="text-text-secondary">
+                      <span className="text-white font-semibold">Hours:</span> Mon-Fri, 9:00 AM - 6:00 PM GMT
+                    </p>
+                  </div>
+                </Card>
+
+                <div className="glass-card p-8 aspect-video bg-gradient-primary/10 flex items-center justify-center">
+                  <MapPin className="w-24 h-24 text-primary-accent" />
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       <section className="section-padding bg-primary-bg">
         <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Need Immediate Assistance?
-          </h2>
-          <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
-            Our live chat support is available 24/5 to answer your questions instantly.
-          </p>
-          <Button variant="primary" onClick={() => setIsChatOpen(true)}>
-            <MessageCircle className="w-5 h-5" />
-            Start Live Chat
-          </Button>
+          <ScrollReveal variant="fadeUp">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Need Immediate Assistance?
+            </h2>
+            <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
+              Our live chat support is available 24/5 to answer your questions instantly.
+            </p>
+            <Button variant="primary" onClick={() => setIsChatOpen(true)}>
+              <MessageCircle className="w-5 h-5" />
+              Start Live Chat
+            </Button>
+          </ScrollReveal>
         </div>
       </section>
 

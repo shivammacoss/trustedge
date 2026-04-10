@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Calendar, TrendingUp, ArrowRight } from 'lucide-react'
 import Card from '../components/Card'
-
+import ScrollReveal, { ScrollRevealGroup, ScrollRevealItem } from '../components/animations/ScrollReveal'
+//
 const MarketNews = () => {
   const [filter, setFilter] = useState('all')
 
@@ -74,8 +75,8 @@ const MarketNews = () => {
 
   const categories = ['all', 'Forex', 'Commodities', 'Crypto', 'Economy']
 
-  const filteredNews = filter === 'all' 
-    ? news 
+  const filteredNews = filter === 'all'
+    ? news
     : news.filter(item => item.category === filter)
 
   const getImpactColor = (impact) => {
@@ -95,104 +96,114 @@ const MarketNews = () => {
     <div className="min-h-screen pt-20">
       <section className="section-padding bg-gradient-hero">
         <div className="container-custom text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Market News</h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Stay updated with the latest market news and analysis from around the world.
-          </p>
+          <ScrollReveal variant="fadeUp">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Market News</h1>
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+              Stay updated with the latest market news and analysis from around the world.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="section-padding bg-primary-secondary">
         <div className="container-custom">
-          <div className="flex flex-wrap gap-4 justify-center mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setFilter(category)}
-                className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                  filter === category
-                    ? 'bg-primary-accent text-white'
-                    : 'bg-white/5 text-text-secondary hover:bg-white/10'
-                }`}
-              >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </button>
-            ))}
-          </div>
+          <ScrollReveal variant="fadeIn">
+            <div className="flex flex-wrap gap-4 justify-center mb-12">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setFilter(category)}
+                  className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                    filter === category
+                      ? 'bg-primary-accent text-white'
+                      : 'bg-white/5 text-text-secondary hover:bg-white/10'
+                  }`}
+                >
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </button>
+              ))}
+            </div>
+          </ScrollReveal>
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
-              {filteredNews.map((item, index) => (
-                <Card key={index} className="p-6 hover:scale-[1.02] transition-transform">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="inline-block bg-primary-accent/20 text-primary-accent px-3 py-1 rounded-full text-sm font-semibold">
-                      {item.category}
+              <ScrollRevealGroup className="space-y-6">
+                {filteredNews.map((item, index) => (
+                  <ScrollRevealItem key={index}>
+                    <Card className="p-6 hover:scale-[1.02] transition-transform">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="inline-block bg-primary-accent/20 text-primary-accent px-3 py-1 rounded-full text-sm font-semibold">
+                          {item.category}
+                        </div>
+                        <div className={`font-semibold ${getImpactColor(item.impact)}`}>
+                          {item.impact} Impact
+                        </div>
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                      <div className="flex items-center gap-4 text-text-secondary text-sm mb-3">
+                        <div className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+                          <span>{item.date}</span>
+                        </div>
+                        <span>•</span>
+                        <span>{item.time}</span>
+                      </div>
+                      <p className="text-text-secondary mb-4">{item.summary}</p>
+                      <button className="flex items-center gap-2 text-primary-accent hover:text-white transition-colors font-semibold">
+                        Read More
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </Card>
+                  </ScrollRevealItem>
+                ))}
+              </ScrollRevealGroup>
+            </div>
+
+            <ScrollReveal variant="fadeRight" delay={0.2}>
+              <div className="space-y-6">
+                <Card className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-primary-accent" />
+                    Economic Calendar
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="pb-4 border-b border-white/10">
+                      <div className="text-text-secondary text-sm mb-1">Today, 14:30 GMT</div>
+                      <div className="text-white font-semibold">US GDP Data</div>
+                      <div className="text-red-400 text-sm">High Impact</div>
                     </div>
-                    <div className={`font-semibold ${getImpactColor(item.impact)}`}>
-                      {item.impact} Impact
+                    <div className="pb-4 border-b border-white/10">
+                      <div className="text-text-secondary text-sm mb-1">Tomorrow, 09:30 GMT</div>
+                      <div className="text-white font-semibold">UK Employment</div>
+                      <div className="text-yellow-400 text-sm">Medium Impact</div>
+                    </div>
+                    <div className="pb-4 border-b border-white/10">
+                      <div className="text-text-secondary text-sm mb-1">Tomorrow, 12:00 GMT</div>
+                      <div className="text-white font-semibold">ECB Speech</div>
+                      <div className="text-red-400 text-sm">High Impact</div>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                  <div className="flex items-center gap-4 text-text-secondary text-sm mb-3">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>{item.date}</span>
-                    </div>
-                    <span>•</span>
-                    <span>{item.time}</span>
-                  </div>
-                  <p className="text-text-secondary mb-4">{item.summary}</p>
-                  <button className="flex items-center gap-2 text-primary-accent hover:text-white transition-colors font-semibold">
-                    Read More
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
                 </Card>
-              ))}
-            </div>
 
-            <div className="space-y-6">
-              <Card className="p-6">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-primary-accent" />
-                  Economic Calendar
-                </h3>
-                <div className="space-y-4">
-                  <div className="pb-4 border-b border-white/10">
-                    <div className="text-text-secondary text-sm mb-1">Today, 14:30 GMT</div>
-                    <div className="text-white font-semibold">US GDP Data</div>
-                    <div className="text-red-400 text-sm">High Impact</div>
+                <Card className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
+                  <div className="space-y-3">
+                    <a href="#" className="block text-text-secondary hover:text-primary-accent transition-colors">
+                      → Trading Strategies
+                    </a>
+                    <a href="#" className="block text-text-secondary hover:text-primary-accent transition-colors">
+                      → Market Analysis
+                    </a>
+                    <a href="#" className="block text-text-secondary hover:text-primary-accent transition-colors">
+                      → Educational Resources
+                    </a>
+                    <a href="#" className="block text-text-secondary hover:text-primary-accent transition-colors">
+                      → Trading Platforms
+                    </a>
                   </div>
-                  <div className="pb-4 border-b border-white/10">
-                    <div className="text-text-secondary text-sm mb-1">Tomorrow, 09:30 GMT</div>
-                    <div className="text-white font-semibold">UK Employment</div>
-                    <div className="text-yellow-400 text-sm">Medium Impact</div>
-                  </div>
-                  <div className="pb-4 border-b border-white/10">
-                    <div className="text-text-secondary text-sm mb-1">Tomorrow, 12:00 GMT</div>
-                    <div className="text-white font-semibold">ECB Speech</div>
-                    <div className="text-red-400 text-sm">High Impact</div>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
-                <div className="space-y-3">
-                  <a href="#" className="block text-text-secondary hover:text-primary-accent transition-colors">
-                    → Trading Strategies
-                  </a>
-                  <a href="#" className="block text-text-secondary hover:text-primary-accent transition-colors">
-                    → Market Analysis
-                  </a>
-                  <a href="#" className="block text-text-secondary hover:text-primary-accent transition-colors">
-                    → Educational Resources
-                  </a>
-                  <a href="#" className="block text-text-secondary hover:text-primary-accent transition-colors">
-                    → Trading Platforms
-                  </a>
-                </div>
-              </Card>
-            </div>
+                </Card>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

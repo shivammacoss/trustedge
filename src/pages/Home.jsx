@@ -1,46 +1,14 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Zap, TrendingDown, Lock, BarChart3, CreditCard, Globe, Monitor, Smartphone } from 'lucide-react'
+import { BarChart3, Monitor, Smartphone } from 'lucide-react'
 import Button from '../components/Button'
-import StatBox from '../components/StatBox'
-import FeatureCard from '../components/FeatureCard'
+import StatsSection from '../components/StatsSection'
+import FeaturesSection from '../components/FeaturesSection'
 import PlatformCard from '../components/PlatformCard'
-import HeroScrollCanvas from '../components/HeroScrollCanvas'
-import HeroOverlay from '../components/HeroOverlay'
+import GradientBlinds from '../components/GradientBlinds'
+import BlurText from '../components/BlurText'
+import ScrollReveal, { ScrollRevealGroup, ScrollRevealItem } from '../components/animations/ScrollReveal'
 
 const Home = () => {
-  const features = [
-    {
-      icon: Zap,
-      title: 'Ultra-Fast Execution',
-      description: 'Orders executed in under 30ms with zero requotes.'
-    },
-    {
-      icon: TrendingDown,
-      title: 'Tight Spreads',
-      description: 'Spreads from 0.0 pips on major currency pairs.'
-    },
-    {
-      icon: Lock,
-      title: 'Secure & Regulated',
-      description: 'Client funds held in segregated accounts. Fully licensed.'
-    },
-    {
-      icon: BarChart3,
-      title: 'Advanced Charting',
-      description: 'Integrated TradingView charts with 100+ indicators.'
-    },
-    {
-      icon: CreditCard,
-      title: 'Easy Deposits',
-      description: 'Fund your account via card, bank wire, or crypto instantly.'
-    },
-    {
-      icon: Globe,
-      title: 'Trade Anywhere',
-      description: 'Available on web, desktop, iOS and Android.'
-    }
-  ]
-
   const platforms = [
     {
       name: 'MetaTrader 4 (MT4)',
@@ -82,87 +50,62 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      {/* HERO SECTION — Scroll-linked canvas animation */}
-      <div className="relative">
-        <HeroScrollCanvas />
-        <HeroOverlay />
+      {/* HERO SECTION */}
+      <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+          <BlurText
+            text="Your Edge in Every Market"
+            delay={200}
+            animateBy="words"
+            direction="top"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] justify-center"
+          />
+        </div>
+        <GradientBlinds
+          gradientColors={['#FF9FFC', '#5227FF']}
+          angle={0}
+          noise={0.1}
+          blindCount={12}
+          blindMinWidth={50}
+          spotlightRadius={0.5}
+          spotlightSoftness={1}
+          spotlightOpacity={1}
+          mouseDampening={0.15}
+          distortAmount={0}
+          shineDirection="left"
+          mixBlendMode="lighten"
+        />
       </div>
 
       {/* TRUST / STATS SECTION */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-primary-bg mb-16">
-            Trusted by Traders Worldwide
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <StatBox value="500000+" label="Active Traders" />
-            <StatBox value="2.3B+" label="Daily Trading Volume" />
-            <StatBox value="1000+" label="Tradable Instruments" />
-            <StatBox value="15+" label="Years Market Experience" />
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-8 text-primary-bg">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">⭐</span>
-              <span className="font-semibold">Top-Rated on Trustpilot 4.8</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Lock className="w-6 h-6 text-primary-accent" />
-              <span className="font-semibold">Regulated by FCA & CySEC</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Globe className="w-6 h-6 text-primary-accent" />
-              <span className="font-semibold">24/7 Dedicated Support</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <StatsSection />
 
       {/* FEATURES SECTION */}
-      <section className="section-padding bg-primary-secondary">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <div className="inline-block text-primary-accent text-sm font-semibold mb-4 tracking-wider uppercase">
-              Why Choose TrustEdgeFX
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Everything You Need to Trade Like a Pro
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {features.map((feature, index) => (
-              <FeatureCard key={index} {...feature} />
-            ))}
-          </div>
-          
-          <div className="text-center">
-            <Link to="/company/why-trustedge" className="inline-flex items-center gap-2 text-primary-accent hover:text-white transition-colors font-semibold text-lg">
-              Explore All Features
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <FeaturesSection />
 
       {/* PLATFORMS SECTION */}
-      <section className="section-padding bg-gray-100">
+      <section className="section-padding bg-primary-bg">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-bg mb-6">
-              Powerful Platforms. Built for Every Trader.
-            </h2>
-            <p className="text-xl text-gray-500 max-w-3xl mx-auto">
-              Choose your preferred platform — from industry-standard MetaTrader to our sleek Web Platform.
-            </p>
+            <ScrollReveal variant="fadeUp">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Powerful Platforms. Built for Every Trader.
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal variant="fadeUp" delay={0.1}>
+              <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+                Choose your preferred platform — from industry-standard MetaTrader to our sleek Web Platform.
+              </p>
+            </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <ScrollRevealGroup className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
             {platforms.map((platform, index) => (
-              <PlatformCard key={index} {...platform} light />
+              <ScrollRevealItem key={index}>
+                <PlatformCard {...platform} featured={index === 1} />
+              </ScrollRevealItem>
             ))}
-          </div>
+          </ScrollRevealGroup>
         </div>
       </section>
 
@@ -171,26 +114,32 @@ const Home = () => {
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0 bg-gradient-to-r from-primary-accent/20 to-primary-purple/20 blur-3xl"></div>
         </div>
-        
+
         <div className="container-custom relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Start Your Trading Journey?
-          </h2>
-          <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
-            Join over 500,000 traders and access global markets in minutes.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/accounts/demo">
-              <Button variant="primary" className="w-full sm:w-auto">
-                Open Account
-              </Button>
-            </Link>
-            <Link to="/accounts/demo">
-              <Button variant="ghost" className="w-full sm:w-auto">
-                Try Demo First
-              </Button>
-            </Link>
-          </div>
+          <ScrollReveal variant="fadeUp" delay={0.1}>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Start Your Trading Journey?
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal variant="fadeUp" delay={0.2}>
+            <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
+              Join over 500,000 traders and access global markets in minutes.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal variant="scaleUp" delay={0.35}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/accounts/demo">
+                <Button variant="primary" className="w-full sm:w-auto">
+                  Open Account
+                </Button>
+              </Link>
+              <Link to="/accounts/demo">
+                <Button variant="ghost" className="w-full sm:w-auto">
+                  Try Demo First
+                </Button>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

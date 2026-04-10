@@ -36,8 +36,7 @@ const Navbar = () => {
     {
       name: 'Platforms',
       items: [
-        { name: 'MT4', path: '/platforms/mt4' },
-        { name: 'MT5', path: '/platforms/mt5' },
+        { name: 'Super Admin', path: '/platforms/super-admin' },
         { name: 'Web Platform', path: '/platforms/web' },
       ]
     },
@@ -85,19 +84,19 @@ const Navbar = () => {
                 onMouseEnter={() => setActiveDropdown(link.name)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center space-x-1 text-text-secondary hover:text-white transition-colors py-2">
+                <button className="flex items-center space-x-1 text-sm text-white font-medium hover:text-primary-accent transition-colors py-2">
                   <span>{link.name}</span>
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-3.5 h-3.5" />
                 </button>
                 
-                <div className={`absolute top-full left-0 mt-2 w-48 glass-card p-2 transition-all duration-200 ${
+                <div className={`absolute top-full left-0 mt-2 w-48 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-2 transition-all duration-200 shadow-2xl ${
                   activeDropdown === link.name ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                 }`}>
                   {link.items.map((item) => (
                     <Link
                       key={item.path}
                       to={item.path}
-                      className="block px-4 py-2 text-text-secondary hover:text-white hover:bg-white/5 rounded-lg transition-all"
+                      className="block px-4 py-2 text-white/90 hover:text-white hover:bg-white/10 hover:translate-x-1 rounded-lg transition-all duration-200 text-sm"
                     >
                       {item.name}
                     </Link>
@@ -110,7 +109,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <button
               onClick={() => setIsLoginOpen(true)}
-              className="text-text-secondary hover:text-white transition-colors px-6 py-2"
+              className="text-white border border-white/40 hover:bg-white/10 hover:border-white transition-all duration-300 px-6 py-2 rounded-full"
             >
               Login
             </button>
