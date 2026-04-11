@@ -55,13 +55,13 @@ const WhyTrustEdgeFX = () => {
       name: 'James Chen',
       role: 'Algorithmic Trader',
       rating: 5,
-      text: 'Perfect for automated trading. MT4/MT5 integration is seamless and the VPS hosting is a game-changer for my EAs.'
+      text: 'Perfect for automated trading. The copy trading integration is seamless and the VPS hosting is a game-changer for my strategies.'
     }
   ]
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">

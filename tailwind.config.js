@@ -22,8 +22,10 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #1A56FF, #7B2FFF)',
+        'gradient-primary': 'linear-gradient(135deg, #7B2FFF, #1A56FF)',
         'gradient-hero': 'linear-gradient(135deg, #0A0E1A 0%, #1A1F3A 50%, #2A1F4A 100%)',
+        'gradient-section': 'linear-gradient(180deg, #0A0E1A 0%, #0F1628 100%)',
+        'gradient-section-alt': 'linear-gradient(180deg, #0F1628 0%, #0A0E1A 100%)',
       },
       backdropBlur: {
         xs: '2px',

@@ -27,7 +27,7 @@ const MT5 = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">

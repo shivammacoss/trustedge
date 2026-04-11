@@ -21,13 +21,13 @@ const StandardAccount = () => {
     { feature: 'Spreads From', standard: '1.2 pips', pro: '0.0 pips', demo: 'Live spreads' },
     { feature: 'Leverage', standard: 'Up to 1:500', pro: 'Up to 1:200', demo: 'Up to 1:500' },
     { feature: 'Commission', standard: 'None', pro: '$3.5/lot', demo: 'None' },
-    { feature: 'Platforms', standard: 'MT4, MT5, Web', pro: 'MT4, MT5, Web', demo: 'MT4, MT5, Web' },
+    { feature: 'Platforms', standard: 'Web, Copy Trading', pro: 'Web, Copy Trading', demo: 'Web, Copy Trading' },
     { feature: 'Support', standard: '24/5', pro: 'Priority 24/7', demo: '24/5' }
   ]
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
             <div className="inline-block bg-primary-accent/20 text-primary-accent px-4 py-2 rounded-full mb-6 font-semibold">

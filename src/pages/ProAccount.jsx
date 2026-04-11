@@ -18,10 +18,10 @@ const ProAccount = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
-            <div className="inline-flex items-center gap-2 bg-gradient-primary px-4 py-2 rounded-full mb-6 font-semibold text-white">
+            <div className="inline-flex items-center gap-2 bg-primary-accent/10 text-primary-accent px-3 py-1.5 rounded mb-6 font-medium text-sm">
               <Crown className="w-5 h-5" />
               For Experienced & Professional Traders
             </div>

@@ -85,14 +85,14 @@ const HeroOverlay = () => {
               Your Edge
             </span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-              Powered by MT4, MT5 <br />
-              <span className="gradient-text">& Web Platform.</span>
+              Powered by Advanced <br />
+              <span className="gradient-text">Trading Technology.</span>
             </h2>
             <p className="text-lg text-gray-300 mt-4 max-w-xl ml-auto">
               Award-winning platforms for every type of trader.
             </p>
             <Link
-              to="/platforms/mt4"
+              to="/platforms/web"
               className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors font-semibold text-lg mt-6"
             >
               Explore Platforms

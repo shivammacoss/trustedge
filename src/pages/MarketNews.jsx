@@ -94,7 +94,7 @@ const MarketNews = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Market News</h1>
@@ -130,7 +130,7 @@ const MarketNews = () => {
               <ScrollRevealGroup className="space-y-6">
                 {filteredNews.map((item, index) => (
                   <ScrollRevealItem key={index}>
-                    <Card className="p-6 hover:scale-[1.02] transition-transform">
+                    <Card className="p-6">
                       <div className="flex items-start justify-between mb-3">
                         <div className="inline-block bg-primary-accent/20 text-primary-accent px-3 py-1 rounded-full text-sm font-semibold">
                           {item.category}

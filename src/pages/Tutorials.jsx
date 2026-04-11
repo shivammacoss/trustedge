@@ -30,8 +30,8 @@ const Tutorials = () => {
       icon: '🧠'
     },
     {
-      title: 'Algorithmic Trading with EAs',
-      description: 'Learn to build and optimize Expert Advisors for automated trading on MetaTrader.',
+      title: 'Algorithmic & Copy Trading',
+      description: 'Learn to set up automated strategies and copy trading on TrustEdgeFX.',
       duration: '5 hours',
       level: 'Advanced',
       lessons: 25,
@@ -54,7 +54,7 @@ const Tutorials = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Trading Tutorials</h1>

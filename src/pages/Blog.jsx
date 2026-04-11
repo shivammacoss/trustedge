@@ -36,10 +36,10 @@ const Blog = () => {
       image: '🥇'
     },
     {
-      title: 'Introduction to MetaTrader 5',
+      title: 'Getting Started with Copy Trading',
       category: 'Platforms',
       date: 'March 5, 2025',
-      excerpt: 'Get started with MT5 and learn how to use its advanced features for better trading results.',
+      excerpt: 'Learn how to follow expert traders and automatically replicate their strategies on TrustEdgeFX.',
       image: '💻'
     },
     {
@@ -59,7 +59,7 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Trading Blog</h1>

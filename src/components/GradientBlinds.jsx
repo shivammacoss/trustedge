@@ -334,7 +334,7 @@ void main() {
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full overflow-hidden relative ${className}`}
+      className={`w-full h-full overflow-hidden relative ${className || ''}`}
       style={{
         ...(mixBlendMode && {
           mixBlendMode: mixBlendMode

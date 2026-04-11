@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Shield, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react'
+import { Twitter, Linkedin, Instagram, Youtube } from 'lucide-react'
 import ScrollReveal, { ScrollRevealGroup, ScrollRevealItem } from './animations/ScrollReveal'
 
 const Footer = () => {
@@ -10,17 +10,26 @@ const Footer = () => {
       { name: 'Indices', path: '/trading/indices' },
       { name: 'Crypto', path: '/trading/crypto' },
     ],
+    platforms: [
+      { name: 'Web Platform', path: '/platforms/web' },
+      { name: 'Copy Trading', path: '/platforms/copy-trading' },
+      { name: 'Prop Trading', path: '/platforms/prop-trading' },
+      { name: 'IB Management', path: '/platforms/ib-management' },
+    ],
+    accounts: [
+      { name: 'Standard', path: '/accounts/standard' },
+      { name: 'Pro', path: '/accounts/pro' },
+      { name: 'Demo', path: '/accounts/demo' },
+    ],
     company: [
       { name: 'About Us', path: '/company/about' },
       { name: 'Why TrustEdgeFX', path: '/company/why-trustedge' },
       { name: 'Contact', path: '/company/contact' },
-      { name: 'Careers', path: '#' },
     ],
-    legal: [
-      { name: 'Privacy Policy', path: '#' },
-      { name: 'Terms & Conditions', path: '#' },
-      { name: 'Risk Disclosure', path: '#' },
-      { name: 'Cookie Policy', path: '#' },
+    education: [
+      { name: 'Tutorials', path: '/education/tutorials' },
+      { name: 'Blog', path: '/education/blog' },
+      { name: 'Market News', path: '/education/news' },
     ],
   }
 
@@ -34,82 +43,90 @@ const Footer = () => {
   return (
     <footer className="bg-[#070B15] border-t border-white/5">
       <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          <ScrollReveal variant="fadeLeft">
-            <div>
-              <Link to="/" className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-2xl font-bold text-white">TrustEdgeFX</span>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-12">
+          {/* Logo & Social */}
+          <div className="col-span-2 md:col-span-3 lg:col-span-1">
+            <ScrollReveal variant="fadeLeft">
+              <Link to="/" className="inline-block mb-4">
+                <img src="/images/logo2.png" alt="TrustEdgeFX" className="h-10 w-auto" />
               </Link>
-              <p className="text-text-secondary mb-6">
+              <p className="text-text-secondary text-sm mb-6">
                 Trade with confidence. Trade with TrustEdgeFX.
               </p>
-              <ScrollRevealGroup className="flex space-x-4" delay={0.4}>
+              <ScrollRevealGroup className="flex space-x-3" delay={0.4}>
                 {socialLinks.map((social) => (
                   <ScrollRevealItem key={social.label}>
                     <a
                       href={social.href}
-                      className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-all duration-300"
+                      className="w-9 h-9 rounded-md bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all duration-200"
                       aria-label={social.label}
                     >
-                      <social.icon className="w-5 h-5 text-text-secondary" />
+                      <social.icon className="w-4 h-4 text-text-secondary" />
                     </a>
                   </ScrollRevealItem>
                 ))}
               </ScrollRevealGroup>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
 
+          {/* Trading */}
           <ScrollReveal variant="fadeUp" delay={0.1}>
             <div>
-              <h3 className="text-white font-semibold mb-4">Trading</h3>
+              <h3 className="text-white font-semibold text-sm mb-4">Trading</h3>
               <ul className="space-y-2">
                 {footerLinks.trading.map((link) => (
                   <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-text-secondary hover:text-white hover:translate-x-1 inline-block transition-all duration-200"
-                    >
-                      {link.name}
-                    </Link>
+                    <Link to={link.path} className="text-text-secondary text-sm hover:text-white transition-colors duration-200">{link.name}</Link>
                   </li>
                 ))}
               </ul>
             </div>
           </ScrollReveal>
 
+          {/* Platforms */}
+          <ScrollReveal variant="fadeUp" delay={0.15}>
+            <div>
+              <h3 className="text-white font-semibold text-sm mb-4">Platforms</h3>
+              <ul className="space-y-2">
+                {footerLinks.platforms.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-text-secondary text-sm hover:text-white transition-colors duration-200">{link.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+
+          {/* Accounts */}
           <ScrollReveal variant="fadeUp" delay={0.2}>
             <div>
-              <h3 className="text-white font-semibold mb-4">Company</h3>
+              <h3 className="text-white font-semibold text-sm mb-4">Accounts</h3>
+              <ul className="space-y-2">
+                {footerLinks.accounts.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-text-secondary text-sm hover:text-white transition-colors duration-200">{link.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+
+          {/* Company */}
+          <ScrollReveal variant="fadeUp" delay={0.25}>
+            <div>
+              <h3 className="text-white font-semibold text-sm mb-4">Company</h3>
               <ul className="space-y-2">
                 {footerLinks.company.map((link) => (
                   <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-text-secondary hover:text-white hover:translate-x-1 inline-block transition-all duration-200"
-                    >
-                      {link.name}
-                    </Link>
+                    <Link to={link.path} className="text-text-secondary text-sm hover:text-white transition-colors duration-200">{link.name}</Link>
                   </li>
                 ))}
               </ul>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal variant="fadeUp" delay={0.3}>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Legal</h3>
+              <h3 className="text-white font-semibold text-sm mt-6 mb-4">Education</h3>
               <ul className="space-y-2">
-                {footerLinks.legal.map((link) => (
+                {footerLinks.education.map((link) => (
                   <li key={link.path}>
-                    <a
-                      href={link.path}
-                      className="text-text-secondary hover:text-white hover:translate-x-1 inline-block transition-all duration-200"
-                    >
-                      {link.name}
-                    </a>
+                    <Link to={link.path} className="text-text-secondary text-sm hover:text-white transition-colors duration-200">{link.name}</Link>
                   </li>
                 ))}
               </ul>
@@ -119,7 +136,7 @@ const Footer = () => {
 
         <ScrollReveal variant="fadeIn" delay={0.5}>
           <div className="pt-8 border-t border-white/5">
-            <p className="text-text-secondary text-sm text-center">
+            <p className="text-text-secondary text-xs text-center">
               © 2025 TrustEdgeFX Ltd. All rights reserved. | Risk Warning: Trading involves significant risk of loss.
             </p>
           </div>

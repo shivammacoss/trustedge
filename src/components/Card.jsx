@@ -1,6 +1,6 @@
-const Card = ({ children, className = '', hover = true }) => {
+const Card = ({ children, className = '' }) => {
   return (
-    <div className={`glass-card p-6 ${hover ? 'hover:scale-105 transition-transform duration-300' : ''} ${className}`}>
+    <div className={`glass-card p-6 ${className}`}>
       {children}
     </div>
   )

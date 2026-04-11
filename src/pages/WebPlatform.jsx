@@ -43,7 +43,7 @@ const WebPlatform = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -101,15 +101,17 @@ const WebPlatform = () => {
               </div>
             </ScrollReveal>
             <ScrollReveal variant="fadeRight" delay={0.2}>
-              <div className="glass-card p-8">
-                <div className="aspect-video bg-gradient-primary/20 rounded-lg flex items-center justify-center mb-6">
-                  <Globe className="w-24 h-24 text-primary-accent" />
+              <div className="glass-card overflow-hidden">
+                <div className="aspect-video rounded-t-lg overflow-hidden">
+                  <img src="/images/image2.png" alt="TrustEdgeFX Web Platform" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Access Anywhere</h3>
-                <p className="text-text-secondary mb-6">
-                  Trade from your desktop, laptop, tablet, or smartphone. Your account syncs seamlessly across all devices.
-                </p>
-                <Button variant="primary" className="w-full" icon>Launch Web Platform</Button>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-white mb-4">Access Anywhere</h3>
+                  <p className="text-text-secondary mb-6">
+                    Trade from your desktop, laptop, tablet, or smartphone. Your account syncs seamlessly across all devices.
+                  </p>
+                  <Button variant="primary" className="w-full" icon>Launch Web Platform</Button>
+                </div>
               </div>
             </ScrollReveal>
           </div>

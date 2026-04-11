@@ -8,33 +8,21 @@ const StatBox = ({ value, label, suffix = '' }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        if (entry.isIntersecting) setIsVisible(true)
       },
       { threshold: 0.1 }
     )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current)
-      }
-    }
+    if (ref.current) observer.observe(ref.current)
+    return () => { if (ref.current) observer.unobserve(ref.current) }
   }, [])
 
   useEffect(() => {
     if (!isVisible) return
-
     const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''))
     const duration = 2000
     const steps = 60
     const increment = numericValue / steps
     let current = 0
-
     const timer = setInterval(() => {
       current += increment
       if (current >= numericValue) {
@@ -44,7 +32,6 @@ const StatBox = ({ value, label, suffix = '' }) => {
         setCount(current)
       }
     }, duration / steps)
-
     return () => clearInterval(timer)
   }, [isVisible, value])
 
@@ -56,8 +43,8 @@ const StatBox = ({ value, label, suffix = '' }) => {
   }
 
   return (
-    <div ref={ref} className="glass-card p-8 text-center">
-      <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
+    <div ref={ref} className="glass-card p-6 text-center">
+      <div className="text-3xl font-bold text-white mb-1">
         {isVisible ? formatCount(count) : value}{suffix}
       </div>
       <div className="text-text-secondary text-sm">{label}</div>

@@ -8,7 +8,7 @@ const DemoAccount = () => {
   const features = [
     'Identical to live trading environment',
     'Unlimited demo resets',
-    'Access to all platforms (MT4, MT5, Web)',
+    'Access to all platforms (Web, Copy Trading)',
     'No credit card required',
     'Real-time market data',
     'Practice with $100,000 virtual funds',
@@ -36,7 +36,7 @@ const DemoAccount = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="section-padding bg-gradient-hero">
+      <section className="section-padding hero-banner">
         <div className="container-custom text-center">
           <ScrollReveal variant="fadeUp">
             <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-4 py-2 rounded-full mb-6 font-semibold">
@@ -131,21 +131,21 @@ const DemoAccount = () => {
               </h2>
               <div className="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
+                  <div className="w-12 h-12 bg-primary-accent/10 text-primary-accent rounded-lg flex items-center justify-center text-lg font-bold mx-auto mb-4">
                     1
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">Sign Up</h3>
                   <p className="text-text-secondary">Create your free demo account in seconds</p>
                 </div>
                 <div>
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
+                  <div className="w-12 h-12 bg-primary-accent/10 text-primary-accent rounded-lg flex items-center justify-center text-lg font-bold mx-auto mb-4">
                     2
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">Choose Platform</h3>
-                  <p className="text-text-secondary">Select MT4, MT5, or Web Platform</p>
+                  <p className="text-text-secondary">Select Web Platform or Copy Trading</p>
                 </div>
                 <div>
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
+                  <div className="w-12 h-12 bg-primary-accent/10 text-primary-accent rounded-lg flex items-center justify-center text-lg font-bold mx-auto mb-4">
                     3
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">Start Trading</h3>

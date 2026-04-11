@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { PopupProvider } from './components/PopupContext'
@@ -10,10 +11,11 @@ import Forex from './pages/Forex'
 import Commodities from './pages/Commodities'
 import Indices from './pages/Indices'
 import Crypto from './pages/Crypto'
-import MT4 from './pages/MT4'
-import MT5 from './pages/MT5'
 import WebPlatform from './pages/WebPlatform'
 import SuperAdmin from './pages/SuperAdmin'
+import CopyTrading from './pages/CopyTrading'
+import PropTrading from './pages/PropTrading'
+import IBManagement from './pages/IBManagement'
 import StandardAccount from './pages/StandardAccount'
 import ProAccount from './pages/ProAccount'
 import DemoAccount from './pages/DemoAccount'
@@ -23,6 +25,14 @@ import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import Tutorials from './pages/Tutorials'
 import MarketNews from './pages/MarketNews'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 const AnimatedRoutes = () => {
   const location = useLocation()
@@ -34,10 +44,11 @@ const AnimatedRoutes = () => {
         <Route path="/trading/commodities" element={<PageTransition><Commodities /></PageTransition>} />
         <Route path="/trading/indices" element={<PageTransition><Indices /></PageTransition>} />
         <Route path="/trading/crypto" element={<PageTransition><Crypto /></PageTransition>} />
-        <Route path="/platforms/mt4" element={<PageTransition><MT4 /></PageTransition>} />
-        <Route path="/platforms/mt5" element={<PageTransition><MT5 /></PageTransition>} />
         <Route path="/platforms/web" element={<PageTransition><WebPlatform /></PageTransition>} />
         <Route path="/platforms/super-admin" element={<PageTransition><SuperAdmin /></PageTransition>} />
+        <Route path="/platforms/copy-trading" element={<PageTransition><CopyTrading /></PageTransition>} />
+        <Route path="/platforms/prop-trading" element={<PageTransition><PropTrading /></PageTransition>} />
+        <Route path="/platforms/ib-management" element={<PageTransition><IBManagement /></PageTransition>} />
         <Route path="/accounts/standard" element={<PageTransition><StandardAccount /></PageTransition>} />
         <Route path="/accounts/pro" element={<PageTransition><ProAccount /></PageTransition>} />
         <Route path="/accounts/demo" element={<PageTransition><DemoAccount /></PageTransition>} />
@@ -56,6 +67,7 @@ function App() {
   return (
     <Router>
       <PopupProvider>
+      <ScrollToTop />
       <ScrollProgress />
       <div className="min-h-screen">
         <Navbar />
