@@ -15,7 +15,6 @@ const HeroScrollCanvas = () => {
 
   const [loadedCount, setLoadedCount] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [loaderVisible, setLoaderVisible] = useState(true)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -38,7 +37,6 @@ const HeroScrollCanvas = () => {
         if (loaded === TOTAL_FRAMES) {
           imagesRef.current = images
           setIsLoaded(true)
-          setTimeout(() => setLoaderVisible(false), 400)
         }
       }
       images[i] = img
@@ -101,38 +99,8 @@ const HeroScrollCanvas = () => {
     }
   }, [])
 
-  const progress = (loadedCount / TOTAL_FRAMES) * 100
-
   return (
     <div ref={containerRef} className="relative" style={{ height: '500vh' }}>
-      {/* Loading Screen */}
-      {loaderVisible && (
-        <div
-          className="fixed inset-0 z-[60] flex flex-col items-center justify-center transition-opacity duration-500"
-          style={{
-            backgroundColor: '#0A0E1A',
-            opacity: isLoaded ? 0 : 1,
-            pointerEvents: isLoaded ? 'none' : 'all',
-          }}
-        >
-          <div className="flex items-center gap-3 mb-8">
-            <img src="/images/logo1.png" alt="TrustEdgeFX" className="h-12 w-auto" />
-          </div>
-          <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full rounded-full transition-all duration-200"
-              style={{
-                width: `${progress}%`,
-                background: 'linear-gradient(to right, #1A56FF, #7B2FFF)',
-              }}
-            />
-          </div>
-          <p className="text-text-secondary text-sm mt-4">
-            Loading experience... {Math.round(progress)}%
-          </p>
-        </div>
-      )}
-
       {/* Sticky canvas container */}
       <div
         className="sticky top-0 h-screen w-full overflow-hidden"
